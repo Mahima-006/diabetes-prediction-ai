@@ -42,7 +42,7 @@ export default function ModelStats() {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    fetch("/api/model-stats")
+    fetch("https://diabetes-prediction-ai-fc54.onrender.com/api/model-stats")
       .then((r) => r.json())
       .then(setStats)
       .catch(() =>
