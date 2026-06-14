@@ -4,7 +4,9 @@
 
 const API_URL =
   import.meta.env.VITE_API_URL ||
-  (import.meta.env.DEV ? "" : "https://your-render-url.onrender.com");
+  (import.meta.env.DEV
+    ? ""
+    : "https://diabetes-prediction-ai-fc54.onrender.com");
 
 /**
  * POST /api/predict
