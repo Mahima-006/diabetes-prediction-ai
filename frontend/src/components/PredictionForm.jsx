@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Info, Loader2 } from "lucide-react";
 import BMICalculator from "./BMICalculator";
 import { clinicalRange, validateField } from "../utils/formatters";
+import { predictDiabetes } from "../utils/api";
 
 const FIELDS = [
   { name: "Pregnancies",              label: "Pregnancies",                   row: 1 },
@@ -90,18 +91,7 @@ export default function PredictionForm({ onResult }) {
       const payload = {};
       FIELDS.forEach(({ name }) => { payload[name] = parseFloat(form[name]); });
 
-      const res = await fetch("/api/predict", {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify(payload),
-      });
-
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || "Prediction failed");
-      }
-
-      const data = await res.json();
+      const data = await predictDiabetes(payload);
 
       /* Persist to history (localStorage) */
       const history = JSON.parse(localStorage.getItem("diabetesai-history") || "[]");
