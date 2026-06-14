@@ -1,0 +1,13 @@
+{
+  "accuracy": 74.0,
+  "precision": 63.2,
+  "recall": 65.5,
+  "f1_score": 64.3,
+  "models_compared": {
+    "Logistic Regression": 75.3,
+    "Decision Tree": 71.4,
+    "Random Forest": 74.0,
+    "KNN": 73.4,
+    "SVM": 74.7
+  }
+}
